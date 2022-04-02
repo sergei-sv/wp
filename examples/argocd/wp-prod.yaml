@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  namespace: argocd
+  name: wordpress-prod-sv
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: default
+  source:
+    repoURL: 'https://sergeisv.jfrog.io/artifactory/api/helm/sergeisv-helm'
+    chart: wordpress-sv
+    targetRevision: 0.*
+  destination:
+    server: 'https://kubernetes.default.svc'
+    namespace: wp-prod
+  syncPolicy:
+    automated: 
+      prune: true
+      selfHeal: true

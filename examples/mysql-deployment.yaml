@@ -14,17 +14,39 @@ spec:
   clusterIP: None
 ---
 apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: mysql-prod-pv-volume
+  labels:
+    type: nfs
+    name: mysql-prod-nfs-vol
+spec:
+  capacity:
+    storage: 10Gi
+  accessModes:
+    - ReadWriteMany
+  persistentVolumeReclaimPolicy: Recycle
+  nfs:
+    path: /mnt/IT-Academy/nfs-data/sa2-19-22/Sergei_Svinobaev/mysql-prod
+    server: 192.168.37.105
+---
+apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: mysql-pv-claim
+  name: mysql-prod-pv-claim
   labels:
-    app: wordpress
+    app: mysql-prod
+    name: mysql-prod-pv-claim
 spec:
   accessModes:
-    - ReadWriteOnce
+    - ReadWriteMany
   resources:
     requests:
       storage: 10Gi
+  selector:
+    matchLabels:
+      name: mysql-prod-nfs-vol
+      type: nfs
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -65,4 +87,4 @@ spec:
       volumes:
       - name: mysql-persistent-storage
         persistentVolumeClaim:
-          claimName: mysql-pv-claim
+          claimName: mysql-prod-pv-claim
