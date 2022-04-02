@@ -32,7 +32,7 @@ jobs:
       with:
         context: ./src
         push: true
-        tags: ${{ secrets.DOCKER_USERNAME }}/wordpress:${{ steps.tag_version.outputs.new_tag }}
+        tags: ${{ secrets.DOCKER_USERNAME }}/wordpress-prod:${{ steps.tag_version.outputs.new_tag }}
 
     - name: Helm tool installer
       uses: Azure/setup-helm@v1
