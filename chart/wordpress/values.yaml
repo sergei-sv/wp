@@ -7,6 +7,9 @@ service:
   type: ClusterIP
   port: 80
 
+ingress:
+  hostname: wp-prod.k8s-15.sa
+
 persistentVolumeClaim:
   storageSize: 10Gi
 
