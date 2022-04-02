@@ -39,7 +39,7 @@ jobs:
 
     - name: Package Helm chart
       run: |
-        helm package chart/wordpress --version=${{ steps.tag_version.outputs.new_tag }} --app-version=${{ steps.tag_version.outputs.new_tag }}
+        helm package chart/wordpress-sv --version=${{ steps.tag_version.outputs.new_tag }} --app-version=${{ steps.tag_version.outputs.new_tag }}
 
     - name: Publish Helm Chart
       run: |
