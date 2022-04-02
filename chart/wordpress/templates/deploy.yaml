@@ -4,7 +4,7 @@ metadata:
   name: wordpress
   namespace: {{ .Release.Namespace | quote }}
   labels:
-    {{- include "wordpress.labels" . | nindent 4 }}
+    app: {{- include "wordpress.labels" . | nindent 4 }}
 spec:
   selector:
     matchLabels:
