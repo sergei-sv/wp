@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: wordpress
   namespace: {{ .Release.Namespace | quote }}
-  labels:
+  labels: 
     {{- include "wordpress.labels" . | nindent 4 }}
 spec:
   selector:
