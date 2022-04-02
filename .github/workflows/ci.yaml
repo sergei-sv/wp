@@ -43,4 +43,4 @@ jobs:
 
     - name: Publish Helm Chart
       run: |
-        curl -H "X-JFrog-Art-Api:${{ secrets.X_JFROG_ART_API }}" -T $(find . -name 'wordpress*.tgz') "https://bksdemo.jfrog.io/artifactory/my-super-repo-helm/$(find . -name 'wordpress*.tgz')"
+        curl -H "X-JFrog-Art-Api:${{ secrets.X_JFROG_ART_API }}" -T $(find . -name 'wordpress*.tgz') "https://sergeisv.jfrog.io/artifactory/sergeisv-helm/$(find . -name 'wordpress*.tgz')"
