@@ -3,8 +3,7 @@ kind: Service
 metadata:
   name: wordpress
   namespace: {{ .Release.Namespace | quote }}
-  labels:
-    {{- include "wordpress.labels" . | nindent 4 }}
+  labels: {{- include "wordpress.labels" . | nindent 4 }}
 spec:
   type: {{ .Values.service.type }}
   ports:

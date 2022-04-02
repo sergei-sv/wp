@@ -2,10 +2,9 @@ apiVersion: v1
 kind: PersistentVolume
 metadata:
   name: wordpress-pv-volume
-  labels:
+  labels: {{- include "wordpress.labels" . | nindent 4 }}
     type: nfs
     name: wordpress-nfs-vol
-    {{- include "wordpress.labels" . | nindent 4 }}
 spec:
   capacity:
     storage: 10Gi

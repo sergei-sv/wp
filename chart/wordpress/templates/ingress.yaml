@@ -4,8 +4,7 @@ metadata:
   name: ingress-wordpress
   annotations:
     kubernetes.io/ingress.class: nginx
-  labels:
-    {{- include "wordpress.labels" . | nindent 4 }}
+  labels: {{- include "wordpress.labels" . | nindent 4 }}
 spec:
   rules:
     - host: {{ .Values.ingress.hostname }}

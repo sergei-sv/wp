@@ -3,8 +3,7 @@ kind: PersistentVolumeClaim
 metadata:
   name: wp-pv-claim
   namespace: {{ .Release.Namespace | quote }}
-  labels:
-    {{- include "wordpress.labels" . | nindent 4 }}
+  labels: {{- include "wordpress.labels" . | nindent 4 }}
 spec:
   accessModes:
     - ReadWriteMany
